@@ -1589,7 +1589,7 @@ class ClassPropertiesAndMethods(unittest.TestCase):
         cm = classmethod(f)
         cm_dict = {'__doc__': (
                        "f docstring"
-                       if support.HAVE_DOCSTRINGS
+                       if support.HAVE_PY_DOCSTRINGS
                        else None
                     ),
                    '__module__': __name__,
@@ -4523,6 +4523,7 @@ class ClassPropertiesAndMethods(unittest.TestCase):
         del o
 
     @support.skip_wasi_stack_overflow()
+    @support.skip_emscripten_stack_overflow()
     @support.requires_resource('cpu')
     def test_wrapper_segfault(self):
         # SF 927248: deeply nested wrappers could cause stack overflow

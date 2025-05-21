@@ -894,9 +894,10 @@ Text I/O
 
    .. attribute:: buffer
 
-      The underlying binary buffer (a :class:`BufferedIOBase` instance) that
-      :class:`TextIOBase` deals with.  This is not part of the
-      :class:`TextIOBase` API and may not exist in some implementations.
+      The underlying binary buffer (a :class:`BufferedIOBase`
+      or :class:`RawIOBase` instance) that :class:`TextIOBase` deals with.
+      This is not part of the :class:`TextIOBase` API and may not exist
+      in some implementations.
 
    .. method:: detach()
 
@@ -965,7 +966,8 @@ Text I/O
    :class:`TextIOBase`.
 
    *encoding* gives the name of the encoding that the stream will be decoded or
-   encoded with.  It defaults to :func:`locale.getencoding`.
+   encoded with.  In :ref:`UTF-8 Mode <utf8-mode>`, this defaults to UTF-8.
+   Otherwise, it defaults to :func:`locale.getencoding`.
    ``encoding="locale"`` can be used to specify the current locale's encoding
    explicitly. See :ref:`io-text-encoding` for more information.
 
